@@ -1,14 +1,11 @@
 # Taps
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
-tap "homebrew/cask-drivers"
 tap "homebrew/services"
 tap "devopsdays/tap"
 
 # Brew CLI apps
-cask "google-chrome"
-brew "1password-cli"
+
 brew "awscli"
 brew "azure-cli"
 brew "diff-so-fancy"
@@ -46,6 +43,7 @@ cask "stats"
 
 # App casks
 cask "1password"
+cask "1password-cli"
 cask "alfred"
 cask "alacritty"
 cask "bartender"
