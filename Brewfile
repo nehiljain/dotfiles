@@ -1,6 +1,5 @@
 # Taps
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/cask-drivers"
@@ -8,6 +7,7 @@ tap "homebrew/services"
 tap "devopsdays/tap"
 
 # Brew CLI apps
+cask "google-chrome"
 brew "1password-cli"
 brew "awscli"
 brew "azure-cli"
@@ -26,8 +26,6 @@ brew "kubernetes-cli"
 brew "mas"
 brew "neovim"
 brew "node"
-brew "netlify-cli", link: false
-brew "ponysay"
 brew "thefuck"
 brew "tldr"
 brew "tree"
@@ -42,7 +40,9 @@ brew "fd"
 brew "ripgrep"
 brew "bfg"
 brew "pyenv"
-brew "stats"
+brew "python@3.11"
+brew "z"
+cask "stats"
 
 # App casks
 cask "1password"
@@ -56,6 +56,9 @@ cask "grammarly"
 cask "handbrake"
 cask "ngrok"
 cask "notion"
+cask "maccy"
+cask "karabiner-elements"
+cask "obsidian"
 cask "postman"
 cask "keepingyouawake"
 cask "signal"
@@ -72,3 +75,4 @@ cask "font-menlo-for-powerline"
 
 # Mac App Store apps
 mas "Spark Classic – Email App", id: 1176895641
+mas "Todoist: To-Do List & Tasks", id: 585829637
