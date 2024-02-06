@@ -1,0 +1,8 @@
+# Chezmoi
+.chezmoi/
+
+# Ignore Chezmoi's generated dotfiles
+.*
+!/.gitignore
+!/.chezmoiignore
+!/.chezmoiremove

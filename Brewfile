@@ -67,6 +67,8 @@ cask "spotify"
 cask "rectangle"
 cask "visual-studio-code"
 cask "zoom"
+casl "raycast"
+cask "google-chrome"
 
 # Font casks
 cask "font-hack-nerd-font"
