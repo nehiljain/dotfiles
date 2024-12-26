@@ -75,10 +75,16 @@ Then, chezmoi can create the file `~/Library/Application\ Support/Rectangle/Rect
 ### What apps are not configured with code but need UI?
 
 - Raycast
+  - https://cln.sh/jScz3cw0
 - Ice menu bar
+  - https://cln.sh/lVtYBk3k
+  - https://cln.sh/kpL4ThZY
 - Stats UI
+  - https://cln.sh/yCY7vyhJ
+- Cleanshot
+  - https://cln.sh/lNkrwxsV
 
-I am logging a config screenshots folder to keep track of the UI changes I make.
+I have logged screenshots on cloud for me to remember the UI changes for future. 
 
 
 ## Contributing

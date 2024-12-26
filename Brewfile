@@ -57,7 +57,6 @@ cask "docker"
 cask 'flux'
 cask "ngrok"
 cask "notion"
-cask "maccy"
 cask "karabiner-elements"
 cask "obsidian"
 cask "postman"
@@ -70,6 +69,7 @@ cask "raycast"
 cask "google-chrome"
 cask "screen-studio"
 cask "jordanbaird-ice"
+cask "cleanshot"
 
 
 # Font casks
