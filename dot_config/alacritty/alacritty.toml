@@ -1,7 +1,7 @@
 [general]
 
 import = [
-  "/Users/nehiljain/.config/alacritty/catppuccin/catppuccin-frappe.toml",
+  "/Users/nehiljain/.config/alacritty/catppuccin/catppuccin-macchiato.toml",
 ]
 live_config_reload = true
 
