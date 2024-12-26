@@ -69,6 +69,7 @@ cask "zoom"
 cask "raycast"
 cask "google-chrome"
 cask "screen-studio"
+cask "jordanbaird-ice"
 
 
 # Font casks
