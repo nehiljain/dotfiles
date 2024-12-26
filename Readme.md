@@ -72,6 +72,15 @@ mkdir -p ~/Library/Application\ Support/Rectangle/
 ```
 Then, chezmoi can create the file `~/Library/Application\ Support/Rectangle/RectangleConfig.json`, which is read by Rectangle by default. If all else fails, use the import button for the JSON file directly.
 
+### What apps are not configured with code but need UI?
+
+- Raycast
+- Ice menu bar
+- Stats UI
+
+I am logging a config screenshots folder to keep track of the UI changes I make.
+
+
 ## Contributing
 
 Feel free to fork this repository and make your own customizations. Pull requests are welcome if you have improvements or additional features to suggest.
