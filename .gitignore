@@ -1,0 +1,4 @@
+*private_keys*
+*.db
+*.sqlite
+*.sqlite3

@@ -1,0 +1,44 @@
+prompt: >
+    Please suggest 2 commit messages, given the following diff.
+
+    This command \`git diff --cached\` is giving us:
+
+    $input
+
+    **Criteria:**
+
+    1. **Format:** Each commit message must follow the conventional commits format,
+    which is \`<type>(<scope>): <description>\`.
+    2. **Relevance:** Avoid mentioning a module name unless it's directly relevant
+    to the change.
+    3. **Clarity and Conciseness:** Each message should clearly and concisely convey
+    the change made.
+    4. Each commit should follow conventional commits format.
+
+    **Commit Message Examples:**
+
+    - fix(app): add password regex pattern
+    - test(unit): add new test cases
+    - style: remove unused imports
+    - refactor(pages): extract common code to \`utils/wait.ts\`
+
+    **Recent Commits on Repo for Reference coming from \`git log -n 10 --pretty=format:'%h %s'\`**
+
+    $git_log
+
+        
+    **Instructions:**
+
+    - Take a moment to understand the changes made in the diff.
+
+    - Think about the impact of these changes on the project (e.g., bug fixes, new
+    features, performance improvements, code refactoring, documentation updates).
+    It's critical to my career you abstract the changes to a higher level and not
+    just describe the code changes.
+
+    - Generate commit messages that accurately describe these changes, ensuring they
+    are helpful to someone reading the project's history.
+
+    - Remember, a well-crafted commit message can significantly aid in the maintenance and understanding of the project over time.
+
+    - If multiple changes are present, make sure you capture them all in a bullet list and in title say multiple changes

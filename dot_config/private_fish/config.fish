@@ -19,3 +19,5 @@ set -x -g TERM "xterm-256color"
 # Enable useful Fish shell features
 set -g -x fish_greeting "Welcome to Fish, the friendly shell!"
 
+set -x -g EDITOR "cursor"
+set -g -x LLM_USER_PATH "~/.config/io.datasette.llm/"
