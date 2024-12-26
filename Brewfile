@@ -1,4 +1,5 @@
 # Taps
+
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "devopsdays/tap"
@@ -67,6 +68,8 @@ cask "rectangle"
 cask "zoom"
 cask "raycast"
 cask "google-chrome"
+cask "screen-studio"
+
 
 # Font casks
 cask "font-hack-nerd-font"
