@@ -1,5 +1,5 @@
 prompt: >
-    Please suggest 2 commit messages, given the following diff.
+    Please write a detailed commit message, given the following diff.
 
     This command \`git diff --cached\` is giving us:
 
@@ -42,3 +42,7 @@ prompt: >
     - Remember, a well-crafted commit message can significantly aid in the maintenance and understanding of the project over time.
 
     - If multiple changes are present, make sure you capture them all in a bullet list and in title say multiple changes
+
+
+    **Output:**
+    No explanation, just the commit message to be used in git commit. No Yapping.
