@@ -36,7 +36,7 @@ fi
 
 if [ ! -f ~/.config/alacritty/catppuccin-frappe.toml ]; then
     echo "Downloading catppuccin-frappe.toml..."
-    curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-frappe.toml
+    git clone https://github.com/catppuccin/alacritty.git ~/.config/alacritty/catppuccin
 else
     echo "catppuccin-frappe.toml already exists."
 fi

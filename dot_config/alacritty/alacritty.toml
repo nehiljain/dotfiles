@@ -1,61 +1,42 @@
-import:
-  - ~/.config/alacritty/catppuccin-frappe.yml
-window:
-  # Blank space added around the window in pixels. This padding is scaled
-  # by DPI and the specified value is always added at both opposing sides.
-  padding:
-    x: 10
-    y: 10
-scrolling:
-  # Specifying '0' will disable scrolling.
-  history: 100000
-  # Number of lines the viewport will move for every line scrolled when
-  # scrollback is enabled (history > 0).
-  multiplier: 3
-font:
-  normal:
-    family: Hack Nerd Font
-    style: Regular
-  bold:
-    family: Hack Nerd Font
-    style: Bold
-  italic:
-    family: Hack Nerd Font
-    style: Italic
-  bold_italic:
-    family: Hack Nerd Font
-    style: Bold Italic
-  size: 16.0
-  use_thin_strokes: true
-# If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
-# Specifying a `duration` of `0` will disable the visual bell.
-bell:
-  animation: EaseOutExpo
-  duration: 300
-  color: '0xffffff'
-background_opacity: 0.99
-selection:
-  # This string contains all characters that are used as separators for
-  # "semantic words" in Alacritty.
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-  # When set to `true`, selected text will be copied to the primary clipboard.
-  save_to_clipboard: true
-# Allow terminal applications to change Alacritty’s window title.
-window.dynamic_title: true
-cursor:
-  style: Block
-  unfocused_hollow: true
-# Live config reload (changes require restart)
-live_config_reload: true
-# Tell Alacritty that we’re using fish here
-shell:
-  program: /opt/homebrew/bin/fish
-  args:
-    - --login
-# Enable clickable URLs
-mouse:
-  url:
-    launcher:
-      program: open
-    modifiers: Command
+[general]
+
+import = [
+  "/Users/nehiljain/.config/alacritty/catppuccin/catppuccin-frappe.toml",
+]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+bold = { family = "Hack Nerd Font", style = "Bold" }
+italic = { family = "Hack Nerd Font", style = "Italic" }
+bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
+size = 16.0
+
+[terminal.shell]
+program = "/opt/homebrew/bin/fish"
+args = ["--login"]
+
+[window]
+padding = { x = 10, y = 10 }
+dynamic_title = true
+opacity = 0.90
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[bell]
+animation = "EaseOutExpo"
+duration = 300
+color = "#ffffff"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
