@@ -41,10 +41,11 @@ brew "z"
 brew "lux"
 brew "btop"
 brew "poetry"
-cask "stats"
+brew "tmux"
 
 
 # App casks
+cask "stats"
 cask "1password"
 cask "cursor"
 cask "nordvpn"
