@@ -1,5 +1,5 @@
 prompt: >
-    Please write a detailed commit message, given the following diff.
+    Like a software engineer, write a concise information dense commit message, given the following diff.
 
     This command \`git diff --cached\` is giving us:
 
@@ -46,3 +46,4 @@ prompt: >
 
     **Output:**
     No explanation, just the commit message to be used in git commit. No Yapping.
+    Markdown text without any code blocks.

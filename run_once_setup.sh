@@ -30,6 +30,7 @@ if ! fish -c "type -q fisher"; then
     fisher install jethrokuan/z
     fisher install PatrickF1/fzf.fish
     fisher install franciscolourenco/done
+    fisher install IlanCosman/tide@v6
 else
     echo "Fisher is already installed."
 fi

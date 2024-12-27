@@ -58,3 +58,10 @@ alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo 
 # File size
 alias fs="stat -f \"%z bytes\""
 
+alias cu="cursor"
+alias cz="chezmoi"
+alias czcd="cd (chezmoi source-path)"
+alias czfish="chezmoi add ~/.config/fish"
+alias czllm="chezmoi add ~/.config/io.datasette.llm/"
+alias czbrew="chezmoi add ~/Brewfile"
+alias editcz="cu (chezmoi source-path)"

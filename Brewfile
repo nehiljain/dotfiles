@@ -70,7 +70,7 @@ cask "google-chrome"
 cask "screen-studio"
 cask "jordanbaird-ice"
 cask "cleanshot"
-
+cask "langgraph-studio"
 
 # Font casks
 cask "font-hack-nerd-font"
