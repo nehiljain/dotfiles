@@ -21,3 +21,6 @@ set -g -x fish_greeting "Welcome to Fish, the friendly shell!"
 
 set -x -g EDITOR "cursor -w"
 set -g -x LLM_USER_PATH "/Users/nehiljain/.config/io.datasette.llm/"
+
+pyenv init - fish | source
+poetry config virtualenvs.in-project true
