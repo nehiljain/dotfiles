@@ -2,14 +2,19 @@ function gcmpuai
     # Step 1: Get the git diff of staged changes
     set git_diff (git diff --cached)
 
-    # Step 2: Get the recent commit logs
-    set git_log (git log -n 10 --pretty=format:'%h %s')
+    echo "Getting git diff..."
 
+    # Step 2: Get the recent commit logs
+    set git_log (git log -n 10 --pretty=format:'%h %s\n')
+
+    echo "Getting git log..."
+
+    echo "Generating commit message..."
     # Step 3: Generate commit message using LLM with the specified template
-    set commit_message (llm -t generate_convention_commit -p git_diff "$git_diff" -p git_log "$git_log")
+    set commit_message (git diff --cached | llm -m 4o-mini -t generate_convention_commit -p git_log "$git_log")
 
     # Step 4: Allow user to edit the commit message
-    echo "Generated commit message:\n$commit_message\n"
+    echo "Generated commit message:\n\n$commit_message\n\n"
     echo "Do you want to (a)ccept, (e)dit, or (c)ancel?"
     read -l user_choice
 
@@ -17,18 +22,23 @@ function gcmpuai
         case 'a'
             # Accept the generated message
             git commit -m "$commit_message"
+            git push -u origin (git_current_branch)
         case 'e'
             # Edit the message using a text editor
             set temp_file (mktemp)
             echo $commit_message > $temp_file
-            $EDITOR $temp_file
+            # Open the editor and wait for it to close
+            nvim $temp_file
+            # After the editor closes, read the edited message
             set edited_message (cat $temp_file)
             rm $temp_file
             git commit -m "$edited_message"
+            git push -u origin (git_current_branch)
         case 'c'
             # Cancel the operation
             echo "Commit canceled."
         case '*'
             echo "Invalid choice. Commit canceled."
     end
+    
 end
