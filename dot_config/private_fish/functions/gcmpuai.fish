@@ -13,6 +13,10 @@ function gcmpuai
     # Step 3: Generate commit message using LLM with the specified template
     set commit_message (git diff --cached | llm -m 4o-mini -t generate_convention_commit -p git_log "$git_log")
 
+    # Post-process the commit message using sed
+    # Remove the triple backticks and replace hyphens with bullet points
+    set commit_message (echo $commit_message | sed 's/```//g' | sed 's/- /\n- /g')
+
     # Step 4: Allow user to edit the commit message
     echo "Generated commit message:\n\n$commit_message\n\n"
     echo "Do you want to (a)ccept, (e)dit, or (c)ancel?"
