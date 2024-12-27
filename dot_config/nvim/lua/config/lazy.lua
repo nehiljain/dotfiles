@@ -33,7 +33,6 @@ require("lazy").setup({
   { "windwp/nvim-autopairs" },
   { "kyazdani42/nvim-web-devicons" },
   { "kyazdani42/nvim-tree.lua" },
-  {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
   { "folke/tokyonight.nvim" },
   { "nvim-treesitter/nvim-treesitter-context" },
   { "nvim-treesitter/nvim-treesitter" },
@@ -45,6 +44,15 @@ require("lazy").setup({
       -- calling `setup` is optional for customization
       require("fzf-lua").setup({})
     end
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

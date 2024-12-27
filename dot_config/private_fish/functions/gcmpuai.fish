@@ -11,7 +11,7 @@ function gcmpuai
 
     echo "Generating commit message..."
     # Step 3: Generate commit message using LLM with the specified template
-    # In neovim if you want to new line bullets do `:%s/\s\+-\s/\r- /g`
+    # In neovim if you want to new line bullets do `%s/\s\+-\s/\r- /g`
     set commit_message (git diff --cached | llm -m 4o-mini -t generate_convention_commit -p git_log "$git_log")
 
     # Post-process the commit message using awk
