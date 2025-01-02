@@ -1,0 +1,29 @@
+prompt: >
+    Like a software engineer, write a concise information dense PR description, given the following list of detailed commit messages.
+
+    Detailed commit logs from \`git log origin/main..current_branch --pretty=format:'%h %s'\`:
+
+    $input
+
+    ** Template:**
+
+    ## ✅ What
+    A brief description of the changes in this PR in bullet points.
+
+    ## 🤔 Why
+    A brief description of the reason for these changes in bullet points.
+
+
+    **Instructions:**
+
+    1. **Relevance:** Avoid mentioning a module name unless it's directly relevant
+    to the change.
+    2. **Clarity and Conciseness:** Each message should clearly and concisely convey
+    the change made.
+    3. Each bullet point should be a single sentence. Not more than 7 words. Small punchy bullet points.
+    4. Avoid repetition of information and ideas at all costs.
+
+
+    **Output:**
+    No explanation, just the PR description to be used in git commit. No Yapping.
+    Markdown text without any code blocks and fenced code blocks.
