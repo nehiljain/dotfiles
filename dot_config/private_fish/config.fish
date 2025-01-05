@@ -25,3 +25,5 @@ set -g -x LLM_USER_PATH "/Users/nehiljain/.config/io.datasette.llm/"
 pyenv init - fish | source
 poetry config virtualenvs.in-project true
 atuin init fish | source
+# uv
+fish_add_path "/Users/nehiljain/.local/bin"

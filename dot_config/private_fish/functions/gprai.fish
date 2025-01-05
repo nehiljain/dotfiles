@@ -1,4 +1,7 @@
 function gprai
+
+    git diff --name-only --cached | xargs poetry run pre-commit run --files
+    
     # Step 1: Get the current branch name
     set current_branch (git_current_branch)
 

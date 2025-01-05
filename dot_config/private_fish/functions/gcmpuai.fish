@@ -1,4 +1,6 @@
 function gcmpuai
+
+    git diff --name-only --cached | xargs poetry run pre-commit run --files
     # Step 1: Get the git diff of staged changes
     set git_diff (git diff --cached)
 
@@ -26,7 +28,7 @@ function gcmpuai
     switch $user_choice
         case 'a'
             # Accept the generated message
-            git commit -m "$commit_message"
+            git commit -m "$commit_message" --no-verify
             git push -u origin (git_current_branch)
         case 'e'
             # Edit the message using a text editor
@@ -37,7 +39,7 @@ function gcmpuai
             # After the editor closes, read the edited message
             set edited_message (cat $temp_file)
             rm $temp_file
-            git commit -m "$edited_message"
+            git commit -m "$edited_message" --no-verify
             git push -u origin (git_current_branch)
         case 'c'
             # Cancel the operation
