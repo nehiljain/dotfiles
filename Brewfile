@@ -73,6 +73,7 @@ cask "jordanbaird-ice"
 cask "cleanshot"
 cask "langgraph-studio"
 cask "pgadmin4"
+cask "firefox"
 
 # Font casks
 cask "font-hack-nerd-font"
