@@ -1,0 +1,73 @@
+[user]
+	name = Nehil Jain
+	email = 2761999+nehiljain@users.noreply.github.com 
+[core]
+	excludesfile = /Users/nehiljain/.gitignore_global
+	editor = nvim
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = cursor --wait --diff $LOCAL $REMOTE
+[merge]
+    tool = nvim
+[mergetool "cursor"]
+    cmd = nvim $MERGED
+    trustExitCode = true
+[push]
+	default = current
+[alias]
+	# Switch to a branch, creating it if necessary
+	gcb = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	remotes = remote -v
+	unstage = reset HEAD --
+	uncommit = reset --soft HEAD~
+	# Automates fetching, stashing, rebasing, and restoring changes.
+	# Handles local changes gracefully, but requires manual intervention for conflicts.
+	# Use with caution to avoid mid-operation states during rebase or stash conflicts.
+	rb = "!f() { \
+	    echo fetching...; \
+	    git fetch; \
+	    if [ $? -eq 0 ]; then \
+		last_status=$(git status --untracked-files=no --porcelain); \
+		if [ \"$last_status\" != \"\" ]; then \
+		    echo stashing local changes...; \
+		    git stash; \
+		else \
+		    echo nothing to stash...; \
+		fi;\
+		if [ $? -eq 0 ]; then \
+		    echo rebasing...;\
+		    git rebase;\
+		    if [ $? -eq 0 ]; then \
+			if [ \"$last_status\" != \"\" ]; then\
+			    echo applying stashed changes...;\
+			    git stash pop;\
+			    if [ $? -ne 0 ]; then \
+				echo STASH POP FAIL - you will need to resolve merge conflicts with git mergetool; \
+			    fi; \
+			fi; \
+		    else \
+			echo REBASE FAILED - you will need to manually run stash pop; \
+		    fi;\
+		fi;\
+	    fi; \
+	    if [ $? -ne 0 ]; then \
+		echo ERROR: Operation failed; \
+	    fi; \
+	}; f"
+	pull = pull --ff-only
+
+	# List aliases
+	aliases = config --get-regexp alias
+
+	st = status
+	co = checkout
+	br = branch
+	cm = commit
+	lg = log --oneline --graph --decorate
+
+
+	template = /Users/nehiljain/.stCommitMsg
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
