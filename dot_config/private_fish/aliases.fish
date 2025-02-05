@@ -31,7 +31,7 @@ alias gpu='git push -u origin (git_current_branch)'
 #compdef _git gpu=git-push
 alias gc='git checkout '
 
-alias gcom='git checkout master'
+alias gcom='git checkout main'
 
 alias ga='git add'
 
@@ -43,6 +43,7 @@ alias grmc='git rm --cached'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 
+alias grbm='git fetch origin main && git rebase origin/main'
 
 
 # Recursively delete `.DS_Store` files
