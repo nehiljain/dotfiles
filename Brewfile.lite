@@ -49,6 +49,7 @@ cask "stats"
 cask "jordanbaird-ice"
 
 # ── System ────────────────────────────────────────────────────────────────────
+cask "karabiner-elements"
 cask "keepingyouawake"
 cask "flux"
 cask "cleanshot"
