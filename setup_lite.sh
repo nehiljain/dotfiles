@@ -78,7 +78,21 @@ step "Installing Fisher plugins"
 '
 ok "fzf.fish, done, tide@v6"
 
-# ── 7. Git: wire up delta ────────────────────────────────────────────────────
+# ── 7. Tide prompt config ─────────────────────────────────────────────────────
+step "Configuring tide prompt"
+"$FISH_PATH" -c "tide configure --auto \
+  --style=Lean \
+  --prompt_colors='True color' \
+  --show_time='24-hour format' \
+  --lean_prompt_height='Two lines' \
+  --prompt_connection=Dotted \
+  --prompt_connection_andor_frame_color=Dark \
+  --prompt_spacing=Sparse \
+  --icons='Few icons' \
+  --transient=No"
+ok "tide configured (Lean, Dotted, Two lines)"
+
+# ── 8. Git: wire up delta ────────────────────────────────────────────────────
 step "Configuring git delta"
 git config --global core.pager delta
 git config --global interactive.diffFilter "delta --color-only"
