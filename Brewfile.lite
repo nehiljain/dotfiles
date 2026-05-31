@@ -1,0 +1,57 @@
+tap "homebrew/bundle"
+
+# ── Core ──────────────────────────────────────────────────────────────────────
+brew "chezmoi"
+brew "fish"
+brew "gh"
+brew "git-extras"
+brew "gnupg"
+brew "mas"
+
+# ── Python (uv handles everything — no pyenv/poetry) ─────────────────────────
+brew "uv"
+
+# ── Modern CLI (Rust-based) ───────────────────────────────────────────────────
+brew "bat"        # better cat
+brew "fd"         # better find
+brew "ripgrep"    # better grep
+brew "eza"        # better ls  (use: eza --tree instead of tree)
+brew "zoxide"     # better cd  (replaces z fish plugin)
+brew "delta"      # better git diffs
+brew "dust"       # better du  (useful on 256GB Air)
+brew "xh"         # better curl / httpie (replaces Postman for quick API calls)
+brew "atuin"      # better shell history
+
+# ── Other CLI ─────────────────────────────────────────────────────────────────
+brew "fzf"
+brew "jq"
+brew "glow"       # markdown viewer in terminal
+brew "lazygit"    # TUI git client
+brew "neovim"
+brew "tmux"
+brew "btop"
+
+# ── Font (required for terminal + nvim icons) ─────────────────────────────────
+cask "font-hack-nerd-font"
+
+# ── Terminal ──────────────────────────────────────────────────────────────────
+cask "ghostty"
+
+# ── Productivity ──────────────────────────────────────────────────────────────
+cask "1password"
+cask "1password-cli"
+cask "obsidian"
+cask "raycast"
+cask "rectangle"
+
+# ── Menu bar ──────────────────────────────────────────────────────────────────
+cask "stats"
+cask "jordanbaird-ice"
+
+# ── System ────────────────────────────────────────────────────────────────────
+cask "karabiner-elements"
+cask "keepingyouawake"
+cask "flux"
+cask "cleanshot"
+cask "nordvpn"
+cask "google-chrome"
