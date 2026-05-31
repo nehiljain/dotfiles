@@ -20,7 +20,10 @@ ok "brew $(brew --version | head -1)"
 # ── 2. Chezmoi + dotfiles ────────────────────────────────────────────────────
 step "Chezmoi → applying dotfiles (git, ssh, nvim, tmux)"
 brew install chezmoi
-chezmoi init --apply "$DOTFILES_REPO"
+# init clones the repo; apply --exclude scripts skips the run_onchange brew
+# script (which installs the full Brewfile — we use Brewfile.lite instead)
+chezmoi init "$DOTFILES_REPO"
+chezmoi apply --exclude scripts
 CHEZMOI_SRC="$(chezmoi source-path)"
 ok "dotfiles applied from $CHEZMOI_SRC"
 
@@ -56,7 +59,11 @@ step "Setting Fish as default shell"
 FISH_PATH="$(brew --prefix)/bin/fish"
 grep -qF "$FISH_PATH" /etc/shells || echo "$FISH_PATH" | sudo tee -a /etc/shells
 if [ "$SHELL" != "$FISH_PATH" ]; then
-  chsh -s "$FISH_PATH"
+  # dscl works on Apple ID accounts where chsh fails with auth errors
+  if ! sudo dscl . -create "/Users/$USER" UserShell "$FISH_PATH" 2>/dev/null; then
+    echo "  ⚠ dscl failed — run manually: chsh -s $FISH_PATH"
+    echo "    or change via: System Settings → Users & Groups → right-click user → Advanced Options"
+  fi
 fi
 ok "default shell → $FISH_PATH"
 
