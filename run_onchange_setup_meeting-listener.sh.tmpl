@@ -1,0 +1,54 @@
+#!/bin/bash
+# Bootstraps the meeting-listener: installs the `alerter` binary if missing,
+# then (re-)loads the LaunchAgent.
+#
+# This script re-runs when the plist content or the pinned alerter version
+# changes (chezmoi tracks the script's rendered content).
+#
+# plist sha256: {{ include "private_Library/private_LaunchAgents/com.nehiljain.meeting-listener.plist" | sha256sum }}
+set -euo pipefail
+
+ALERTER_VERSION="v26.5"
+ALERTER_BIN="${HOME}/.local/bin/alerter"
+PLIST="${HOME}/Library/LaunchAgents/com.nehiljain.meeting-listener.plist"
+LABEL="com.nehiljain.meeting-listener"
+
+if [ "$(uname -s)" != "Darwin" ]; then
+  echo "meeting-listener: macOS only — skipping"
+  exit 0
+fi
+
+# 1. alerter ---------------------------------------------------------------
+need_alerter=1
+if [ -x "${ALERTER_BIN}" ] && "${ALERTER_BIN}" --version 2>/dev/null | grep -q "${ALERTER_VERSION#v}"; then
+  need_alerter=0
+fi
+if [ "$need_alerter" -eq 1 ]; then
+  if [ "$(uname -m)" != "arm64" ]; then
+    echo "meeting-listener: alerter is arm64-only; skipping install on $(uname -m)" >&2
+  else
+    echo "meeting-listener: installing alerter ${ALERTER_VERSION} → ${ALERTER_BIN}"
+    mkdir -p "${HOME}/.local/bin"
+    tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+    curl -sSL "https://github.com/vjeantet/alerter/releases/download/${ALERTER_VERSION}/alerter-${ALERTER_VERSION#v}.zip" -o "${tmp}/alerter.zip"
+    unzip -q "${tmp}/alerter.zip" -d "${tmp}"
+    mv "${tmp}/alerter" "${ALERTER_BIN}"
+    chmod +x "${ALERTER_BIN}"
+    xattr -d com.apple.quarantine "${ALERTER_BIN}" 2>/dev/null || true
+    trap - EXIT
+    rm -rf "$tmp"
+  fi
+fi
+
+# 2. LaunchAgent (re-)load -------------------------------------------------
+if [ ! -f "${PLIST}" ]; then
+  echo "meeting-listener: plist not yet installed at ${PLIST}; skipping bootstrap"
+  exit 0
+fi
+
+uid=$(id -u)
+# bootout if already loaded — ignore "no such service" error on fresh installs
+launchctl bootout "gui/${uid}/${LABEL}" 2>/dev/null || true
+launchctl bootstrap "gui/${uid}" "${PLIST}"
+launchctl kickstart -k "gui/${uid}/${LABEL}" 2>/dev/null || true
+echo "meeting-listener: loaded as ${LABEL}"
