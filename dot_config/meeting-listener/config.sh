@@ -20,9 +20,10 @@ MEET_APP_REGEX='^(zoom\.us|Google Chrome Helper.*|Arc Helper.*|Brave Browser Hel
 # Names we always ignore (the recorder itself, voice-input tools, etc.)
 IGNORE_REGEX='^(meetily|BetterDictation|Wispr Flow|MacWhisper|Granola|cleft)$'
 
-NOTIFY_TIMEOUT_S=20         # alerter timeout for start prompt
-STOP_NOTIFY_TIMEOUT_S=15    # alerter timeout for stop prompt
+NOTIFY_TIMEOUT_S=90         # alerter timeout for start prompt
+STOP_NOTIFY_TIMEOUT_S=15    # alerter timeout for stop prompt (stop is auto now; only used if user reverts)
 START_COOLDOWN_S=30         # suppress repeat start prompts within this window
+IGNORE_DND=1                # pierce Focus / Do Not Disturb modes (alerter only)
 LOG_FILE="${HOME}/Library/Logs/meeting-listener.log"
 
 # Allow per-host overrides without polluting the repo

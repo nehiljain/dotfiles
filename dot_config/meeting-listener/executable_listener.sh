@@ -108,6 +108,9 @@ _alerter_prompt() {
   if [ -n "${RECORDER_ICON:-}" ] && [ -f "${RECORDER_ICON}" ]; then
     extra+=(--app-icon "${RECORDER_ICON}")
   fi
+  if [ "${IGNORE_DND:-0}" = "1" ]; then
+    extra+=(--ignore-dnd)
+  fi
   alerter \
     --title "${title}" \
     --subtitle "${subtitle}" \
