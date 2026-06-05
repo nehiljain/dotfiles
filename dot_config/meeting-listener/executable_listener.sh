@@ -159,15 +159,19 @@ notify_start() {
 
 # Auto-stop. No prompt — same app that triggered Record just released the
 # mic, so the recording's bracket is closed cleanly.
+#
+# IMPORTANT: clear ACTIVE_FILE *before* attempting stop. If stop fails the
+# user can recover manually, but we must never leave the state file behind,
+# because that would suppress every future start prompt.
 auto_stop() {
   local proc="$1"
   (
     log "MIC-OFF proc=${proc} → auto-stop"
+    rm -f "${ACTIVE_FILE}"
     if recorder_stop_recording >> "${LOG_FILE}" 2>&1; then
-      rm -f "${ACTIVE_FILE}"
       log "auto-stop OK"
     else
-      log "recorder_stop_recording FAILED — leaving active state"
+      log "auto-stop FAILED — recording may still be running; stop manually via meetily tray"
     fi
   ) &
 }
