@@ -1,0 +1,21 @@
+# Ghostty configuration — migrated from Alacritty.
+# Validate/inspect with:  ghostty +show-config
+# List available themes with:  ghostty +list-themes
+
+# Font — same Nerd Font + size as the old Alacritty setup
+font-family = Hack Nerd Font
+font-size = 16
+
+# Catppuccin Macchiato (bundled with Ghostty)
+theme = catppuccin-macchiato
+
+# Window
+background-opacity = 0.9
+window-padding-x = 10
+window-padding-y = 10
+
+# Cursor
+cursor-style = block
+
+# Selecting text copies to the system clipboard (matches Alacritty's save_to_clipboard)
+copy-on-select = clipboard

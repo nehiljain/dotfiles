@@ -1,0 +1,5 @@
+# Fish rewrites fish_variables constantly at runtime and creates atomic-write
+# temp files (fishd.tmp.*). Keep them out of the dotfiles so `chezmoi status`
+# stays clean and `chezmoi apply` never clobbers live shell state.
+.config/fish/fish_variables
+.config/fish/fishd.tmp.*
